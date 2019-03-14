@@ -1,0 +1,29 @@
+<html>
+
+<body>
+  <h1>HTTP2 Push!</h1>
+  <button onclick="hello()">hello</button>
+  <script>
+    function hello() {
+      let xhr = window.XMLHttpRequest ? new XMLHttpRequest() : ActiveXObject("microsoft.XMLHttp")
+      xhr.open("get", `/hello`, true);
+      xhr.onreadystatechange = () => {
+        if (xhr.readyState == 4) {
+          if (xhr.status == 200) {
+            var data = xhr.response;
+            console.log(data)
+            return data;
+          }
+        }
+      }
+      xhr.send();
+    }
+  </script>
+</body>
+
+<script src="bundle1.js" />
+</script>
+<script src="bundle2.js" />
+</script>
+
+</html>
